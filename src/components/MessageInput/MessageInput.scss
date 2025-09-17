@@ -1,0 +1,56 @@
+// === src/components/MessageInput/MessageInput.scss ===
+@use '../../styles/index' as s;
+@use 'sass:color';
+
+.message-input-container {
+  padding: s.$base-spacing;
+  background-color: s.$background-color;
+  border-top: 1px solid s.$border-color;
+  flex-shrink: 0;
+}
+
+.message-input-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  input {
+    flex-grow: 1;
+    height: 44px;
+    border-radius: 22px;
+    border: 1px solid s.$border-color;
+    padding: 0 18px;
+    font-size: 1rem;
+    color: s.$text-primary;
+    background-color: s.$surface-color;
+
+    &:focus {
+      outline: none;
+      border-color: s.$primary-color;
+      box-shadow: 0 0 0 2px rgba(s.$primary-color, 0.2);
+    }
+  }
+
+  button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background-color: s.$primary-color;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: color.adjust(s.$primary-color, $lightness: 20%);
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}

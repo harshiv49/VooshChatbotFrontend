@@ -1,0 +1,79 @@
+// === src/components/MessageList/MessageList.scss ===
+@use '../../styles/index' as s;
+
+.message-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: s.$base-spacing;
+  background-color: s.$background-color;
+  display: flex;
+  flex-direction: column;
+  gap: s.$base-spacing;
+}
+
+.message-bubble {
+  display: flex;
+  align-items: flex-end;
+  max-width: 75%;
+  gap: 10px;
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: s.$text-secondary;
+    background-color: s.$surface-color;
+  }
+
+  &__text {
+    padding: 10px 16px;
+    border-radius: s.$border-radius-lg;
+    line-height: 1.5;
+  }
+
+  // ... (keep all other styles)
+
+  &.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+    .message-bubble__text {
+      background-color: s.$user-message-bg;
+      color: #000000; // CHANGED: Text must be black on the light grey bubble
+      border-bottom-right-radius: 4px;
+    }
+    .message-bubble__icon {
+      background-color: s.$user-message-bg;
+      color: #000000; // CHANGED: Icon color must also be black
+    }
+  }
+
+// ... (keep all other styles)
+
+  &.bot {
+    align-self: flex-start;
+    .message-bubble__text {
+      background-color: s.$bot-message-bg;
+      color: s.$text-primary;
+      border-bottom-left-radius: 4px;
+    }
+  }
+}
+
+.typing-indicator {
+  display: block;
+  width: 60px;
+  height: 20px;
+  background: linear-gradient(90deg, transparent, rgba(s.$text-secondary, 0.4), transparent);
+  background-size: 200% 100%;
+  border-radius: s.$border-radius-lg;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

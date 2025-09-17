@@ -1,0 +1,52 @@
+// src/components/ChatScreen/ChatScreen.scss
+@use '../../styles/index' as s;
+
+.chat-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: s.$background-color;
+  color: s.$text-primary;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; // This pushes the left and right items apart
+    padding: s.$base-spacing;
+    background-color: s.$surface-color;
+    border-bottom: 1px solid s.$border-color;
+    flex-shrink: 0;
+
+    &-info {
+      display: flex;
+      align-items: center;
+      gap: s.$base-spacing; // ADDED: A gap for better spacing
+    }
+
+    &-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: s.$surface-color;
+      color: s.$text-primary;
+      border: 1px solid s.$border-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // REMOVED margin-right to use gap on the parent instead
+    }
+
+    &-text {
+      h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: s.$text-primary;
+      }
+      p {
+        font-size: 0.85rem;
+        color: s.$text-secondary;
+      }
+    }
+  }
+}
