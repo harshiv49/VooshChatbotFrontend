@@ -187,12 +187,24 @@ const App = () => {
   }, [sessionId]);
 
   return (
-    <ChatScreen
-      messages={messages}
-      isLoading={isLoading}
-      onSendMessage={handleSendMessage}
-      onResetSession={handleResetSession}
-    />
+    <>
+      <div
+        style={{
+          textAlign: "center",
+          padding: "5px",
+          backgroundColor: isOnline ? "#28a745" : "#dc3545",
+          color: "white",
+        }}
+      >
+        System Status: {isOnline ? "Online" : "Offline"}
+      </div>
+      <ChatScreen
+        messages={messages}
+        isLoading={isLoading}
+        onSendMessage={handleSendMessage}
+        onResetSession={handleResetSession}
+      />
+    </>
   );
 };
 
