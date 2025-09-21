@@ -1,11 +1,9 @@
-// === src/components/MessageList/MessageList.scss ===
 @use '../../styles/index' as s;
 
 .message-list {
   flex-grow: 1;
   overflow-y: auto;
   padding: s.$base-spacing;
-  background-color: s.$background-color;
   display: flex;
   flex-direction: column;
   gap: s.$base-spacing;
@@ -33,25 +31,30 @@
     padding: 10px 16px;
     border-radius: s.$border-radius-lg;
     line-height: 1.5;
-  }
+    word-wrap: break-word; // Ensures long words don't overflow
 
-  // ... (keep all other styles)
+    // This class provides the blinking cursor for streaming responses
+    &.streaming::after {
+      content: '▋';
+      animation: blink 1s step-end infinite;
+      color: s.$text-secondary;
+      opacity: 1;
+    }
+  }
 
   &.user {
     align-self: flex-end;
     flex-direction: row-reverse;
     .message-bubble__text {
       background-color: s.$user-message-bg;
-      color: #000000; // CHANGED: Text must be black on the light grey bubble
+      color: #000000; // Black text on the light grey user bubble
       border-bottom-right-radius: 4px;
     }
     .message-bubble__icon {
       background-color: s.$user-message-bg;
-      color: #000000; // CHANGED: Icon color must also be black
+      color: #000000; // Black icon for the light grey user bubble
     }
   }
-
-// ... (keep all other styles)
 
   &.bot {
     align-self: flex-start;
@@ -63,17 +66,8 @@
   }
 }
 
-.typing-indicator {
-  display: block;
-  width: 60px;
-  height: 20px;
-  background: linear-gradient(90deg, transparent, rgba(s.$text-secondary, 0.4), transparent);
-  background-size: 200% 100%;
-  border-radius: s.$border-radius-lg;
-  animation: shimmer 1.5s infinite linear;
-}
-
-@keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+// Animation for the streaming cursor
+@keyframes blink {
+  from, to { opacity: 0; }
+  50% { opacity: 1; }
 }
