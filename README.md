@@ -16,4 +16,29 @@
 -   **Styling**: SCSS
 -   **State Management**: React Hooks (`useState`, `useEffect`)
 
----
+-- 
+
+## Install dependencies:
+- Bash
+- pnpm install
+
+## Set up environment variables:
+- Create a .env.local file in the root directory. You must provide the URL where your backend server is running.
+
+## Example for local development
+- VITE_API_BASE_URL=http://localhost:8000/api
+- Run the development server:
+- pnpm run dev
+
+The application will be available at http://localhost:5173 (or another port if 5173 is busy).
+
+## Deployment
+This application is configured for easy deployment on static hosting platforms like Netlify or Vercel.
+
+Connect your Git repository to the platform.
+
+Set the build command to pnpm run build.
+
+Set the publish directory to dist.
+
+Add the VITE_API_BASE_URL environment variable in the platform's settings, pointing to your deployed backend URL.
